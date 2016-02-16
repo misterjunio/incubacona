@@ -1,0 +1,4 @@
+rails:
+  name: Rails Tutorial
+  email: example@railstutorial.com
+  password_digest: <%= User.digest('misterjunio') %>
