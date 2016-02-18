@@ -30,14 +30,14 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
       delete micropost_path(first_micropost)
     end
     # Visit a different user.
-    get user_path(users(:junius))
+    get user_path(users(:archer))
     assert_select 'a', text: 'delete', count: 0
   end
   
   test "micropost sidebar count" do
     log_in_as(@user)
     get root_path
-    assert_match "#{@user.micropost.count} microposts", response.body
+    assert_match "#{@user.microposts.count} microposts", response.body
     # User with zero microposts
     other_user = users(:malory)
     log_in_as(other_user)
@@ -45,6 +45,6 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_match "0 microposts", response.body
     other_user.microposts.create!(content: "A micropost")
     get root_path
-    assert_match "#{other_user.micropost.count} microposts", response.body
+    assert_match "#{other_user.microposts.count} micropost", response.body
   end
 end
