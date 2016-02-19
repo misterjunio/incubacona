@@ -1,3 +1,5 @@
+=begin
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -39,3 +41,13 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+=end
+
+User.create!(name:  "Mister Júnio",
+             email: "ruca.33.maia@gmail.com",
+             password:              "Jogador10",
+             password_confirmation: "Jogador10",
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
